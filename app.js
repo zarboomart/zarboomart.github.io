@@ -150,3 +150,29 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+// ============================
+// ذخیره قیمت کلاس‌ها
+// ============================
+
+function savePrices(){
+
+    const p1 = document.getElementById("priceInput1").value;
+    const p2 = document.getElementById("priceInput2").value;
+
+    if(p1==""){
+        alert("قیمت سیاه‌قلم را وارد کنید");
+        return;
+    }
+
+    if(p2==""){
+        alert("قیمت نقاشی را وارد کنید");
+        return;
+    }
+
+    localStorage.setItem("price1",p1);
+
+    localStorage.setItem("price2",p2);
+
+    alert("✅ قیمت‌ها ذخیره شدند.");
+
+}
