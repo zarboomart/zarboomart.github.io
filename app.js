@@ -248,3 +248,55 @@ form.reset();
 });
 
 }
+// ثبت هنرجو
+const form = document.querySelector("form");
+
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = form.querySelector("input[type='text']").value;
+    const phone = form.querySelector("input[type='tel']").value;
+    const course = form.querySelector("select").value;
+
+    let students =
+      JSON.parse(localStorage.getItem("students")) || [];
+
+    students.push({
+      name,
+      phone,
+      course,
+    });
+
+    localStorage.setItem(
+      "students",
+      JSON.stringify(students)
+    );
+
+    alert("ثبت نام انجام شد ✅");
+
+    form.reset();
+  });
+}
+
+// نمایش هنرجویان در پنل مدیریت
+const studentsTable = document.getElementById("studentsTable");
+
+if (studentsTable) {
+
+  const students =
+    JSON.parse(localStorage.getItem("students")) || [];
+
+  students.forEach(student => {
+
+    studentsTable.innerHTML += `
+      <tr>
+        <td>${student.name}</td>
+        <td>${student.phone}</td>
+        <td>${student.course}</td>
+      </tr>
+    `;
+
+  });
+
+}
