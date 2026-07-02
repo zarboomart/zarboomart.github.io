@@ -162,3 +162,30 @@ registerForm.reset();
 });
 
 }
+// ============================
+// نمایش هنرجویان در داشبورد
+// ============================
+
+const studentsTable = document.getElementById("studentsTable");
+
+if (studentsTable) {
+
+    const students = JSON.parse(localStorage.getItem("students")) || [];
+
+    studentsTable.innerHTML = "";
+
+    students.forEach(student => {
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${student.name}</td>
+            <td>${student.phone}</td>
+            <td>${student.course}</td>
+        `;
+
+        studentsTable.appendChild(row);
+
+    });
+
+}
