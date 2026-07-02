@@ -76,3 +76,89 @@ topButton.onclick=()=>{
     });
 
 };
+// ============================
+// نمایش قیمت ها
+// ============================
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+    const price1=document.getElementById("price1");
+    const price2=document.getElementById("price2");
+
+    if(price1){
+
+        const p=localStorage.getItem("price1");
+
+        if(p){
+            price1.innerText=p+" تومان";
+        }
+
+    }
+
+    if(price2){
+
+        const p=localStorage.getItem("price2");
+
+        if(p){
+            price2.innerText=p+" تومان";
+        }
+
+    }
+
+});
+
+// ============================
+// ذخیره قیمت ها
+// ============================
+
+function savePrices(){
+
+    const p1=document.getElementById("priceInput1");
+    const p2=document.getElementById("priceInput2");
+
+    if(!p1 || !p2){
+        return;
+    }
+
+    localStorage.setItem("price1",p1.value);
+    localStorage.setItem("price2",p2.value);
+
+    alert("✅ قیمت‌ها ذخیره شد");
+
+}
+
+// ============================
+// ثبت نام هنرجو
+// ============================
+
+const registerForm=document.getElementById("registerForm");
+
+if(registerForm){
+
+registerForm.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const student={
+
+name:document.getElementById("studentName").value,
+
+phone:document.getElementById("studentPhone").value,
+
+course:document.getElementById("studentClass").value
+
+};
+
+let students=JSON.parse(localStorage.getItem("students")) || [];
+
+students.push(student);
+
+localStorage.setItem("students",JSON.stringify(students));
+
+alert("✅ ثبت نام انجام شد");
+
+registerForm.reset();
+
+});
+
+}
