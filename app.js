@@ -348,3 +348,29 @@ studentsTable.innerHTML += `
 });
 
 }
+// ثبت نام هنرجو
+const form = document.querySelector("form");
+
+if (form) {
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const name = form.querySelector('input[type="text"]').value;
+        const phone = form.querySelector('input[type="tel"]').value;
+        const course = form.querySelector("select").value;
+
+        let students = JSON.parse(localStorage.getItem("students")) || [];
+
+        students.push({
+            name: name,
+            phone: phone,
+            course: course
+        });
+
+        localStorage.setItem("students", JSON.stringify(students));
+
+        alert("ثبت‌نام انجام شد ✅");
+
+        form.reset();
+    });
+}
