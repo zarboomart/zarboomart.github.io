@@ -328,3 +328,23 @@ registerForm.reset();
 });
 
 }
+// نمایش هنرجویان در پنل مدیریت
+const studentsTable = document.getElementById("studentsTable");
+
+if (studentsTable) {
+
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+students.forEach(student => {
+
+studentsTable.innerHTML += `
+<tr>
+<td>${student.name}</td>
+<td>${student.phone}</td>
+<td>${student.course}</td>
+</tr>
+`;
+
+});
+
+}
