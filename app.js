@@ -300,3 +300,31 @@ if (studentsTable) {
   });
 
 }
+// ثبت نام هنرجو
+const registerForm = document.querySelector("form");
+
+if (registerForm) {
+
+registerForm.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const student = {
+name: document.querySelector('input[type="text"]').value,
+phone: document.querySelector('input[type="tel"]').value,
+course: document.querySelector("select").value
+};
+
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+students.push(student);
+
+localStorage.setItem("students", JSON.stringify(students));
+
+alert("ثبت نام با موفقیت انجام شد.");
+
+registerForm.reset();
+
+});
+
+}
