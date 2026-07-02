@@ -176,3 +176,42 @@ function savePrices(){
     alert("✅ قیمت‌ها ذخیره شدند.");
 
 }
+// =========================
+// ثبت هنرجو
+// =========================
+
+const form = document.getElementById("registerForm");
+
+if(form){
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const name=document.getElementById("studentName").value;
+
+const phone=document.getElementById("studentPhone").value;
+
+const studentClass=document.getElementById("studentClass").value;
+
+let students=JSON.parse(localStorage.getItem("students")) || [];
+
+students.push({
+
+name:name,
+
+phone:phone,
+
+class:studentClass
+
+});
+
+localStorage.setItem("students",JSON.stringify(students));
+
+alert("✅ ثبت‌نام با موفقیت انجام شد.");
+
+form.reset();
+
+});
+
+}
